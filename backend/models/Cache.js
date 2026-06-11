@@ -1,0 +1,11 @@
+const mongoose = require('mongoose');
+
+const cacheSchema = new mongoose.Schema({
+  key: { type: String, required: true, unique: true },
+  data: { type: mongoose.Schema.Types.Mixed },
+  expiresAt: { type: Date, required: true },
+}, { timestamps: true });
+
+cacheSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
+
+module.exports = mongoose.model('Cache', cacheSchema);
