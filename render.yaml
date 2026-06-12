@@ -2,8 +2,10 @@ services:
   - type: web
     name: dineflow-backend
     env: node
+    region: ohio
     buildCommand: npm install
     startCommand: npm start
+    healthCheckPath: /api/v1/health
     envVars:
       - key: MONGODB_URI
         sync: false
@@ -12,4 +14,12 @@ services:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 5000
+        value: 10000
+      - key: ALLOWED_ORIGINS
+        value: https://dineflow.netlify.app,https://your-custom-domain.com
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
