@@ -13,20 +13,20 @@ connectDB();
 const app = express();
 
 app.set('trust proxy', 1);
+
+// CORS must be registered BEFORE helmet and all routes
+// Allow all origins so Vercel frontend can reach Render backend
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // handle preflight requests for all routes
+
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
-}));
-
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(',').map((o) => o.trim())
-  : ['http://localhost:3000'];
-
-app.use(cors({
-  origin: (origin, cb) => {
-    if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') return cb(null, true);
-    cb(null, false);
-  },
-  credentials: true,
 }));
 
 const limiter = rateLimit({

@@ -32,4 +32,4 @@ coverage/
 
 # Misc
 .env.local
-.env.production
+# .env.production is intentionally tracked — only contains public API URL, no secrets
