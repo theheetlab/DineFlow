@@ -54,6 +54,7 @@ const uploadRoutes = require('./routes/uploadRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 const exportRoutes = require('./routes/exportRoutes');
 const activityRoutes = require('./routes/activityRoutes');
+const seedRoutes = require('./routes/seedRoutes');
 
 app.get('/api/v1/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
@@ -70,6 +71,7 @@ app.use('/api/v1/upload', uploadRoutes);
 app.use('/api/v1/search', searchRoutes);
 app.use('/api/v1/exports', exportRoutes);
 app.use('/api/v1/activity', activityRoutes);
+app.use('/api/v1/seed', seedRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
