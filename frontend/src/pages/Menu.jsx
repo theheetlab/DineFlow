@@ -93,7 +93,7 @@ const Menu = () => {
                   onClick={() => setSelectedItem(item)}
                 >
                   <div className="menu-item-image">
-                    <img src={item.image} alt={item.name} loading="lazy" />
+                    <img src={item.image} alt={item.name} loading="lazy" onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; }} />
                     {item.isBestSeller && <span className="menu-badge best-seller">Best Seller</span>}
                     {!item.isAvailable && <div className="menu-unavailable">Unavailable</div>}
                   </div>
@@ -124,7 +124,7 @@ const Menu = () => {
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelectedItem(null)}>✕</button>
             <div className="modal-image">
-              <img src={selectedItem.image} alt={selectedItem.name} />
+              <img src={selectedItem.image} alt={selectedItem.name} onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; }} />
             </div>
             <div className="modal-body">
               <div className="modal-header">

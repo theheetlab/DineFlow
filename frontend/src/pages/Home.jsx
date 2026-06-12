@@ -87,7 +87,7 @@ const Home = () => {
             {featuredItems.map((item) => (
               <div key={item._id} className="featured-card card">
                 <div className="featured-card-image">
-                  <img src={item.image} alt={item.name} loading="lazy" />
+                  <img src={item.image} alt={item.name} loading="lazy" onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; }} />
                   <span className="featured-badge">Featured</span>
                 </div>
                 <div className="featured-card-body">
@@ -189,7 +189,7 @@ const Home = () => {
                 </div>
                 <p className="testimonial-content">"{t.content}"</p>
                 <div className="testimonial-author">
-                  {t.image && <img src={t.image} alt={t.name} />}
+                  {t.image && <img src={t.image} alt={t.name} onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; }} />}
                   <div>
                     <strong>{t.name}</strong>
                     <span>{t.role}</span>
