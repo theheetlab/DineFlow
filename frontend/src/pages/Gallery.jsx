@@ -10,18 +10,18 @@ const galleryCategories = [
 ];
 
 const galleryImages = [
-  { src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600', category: 'restaurant', title: 'Main Dining Room' },
-  { src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600', category: 'restaurant', title: 'Elegant Interior' },
-  { src: 'https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=600', category: 'restaurant', title: 'Bar Area' },
-  { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600', category: 'food', title: 'Grilled Specialties' },
-  { src: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600', category: 'food', title: 'Fresh Salads' },
-  { src: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600', category: 'food', title: 'Artisan Pizza' },
-  { src: 'https://images.unsplash.com/photo-1555244162-803834f70033?w=600', category: 'food', title: 'Dessert Presentation' },
-  { src: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600', category: 'food', title: 'Seafood Platter' },
-  { src: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600', category: 'events', title: 'Wedding Reception' },
-  { src: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600', category: 'events', title: 'Corporate Event' },
-  { src: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600', category: 'events', title: 'Birthday Celebration' },
-  { src: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600', category: 'restaurant', title: 'Private Dining' },
+  { src: 'https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'restaurant', title: 'Main Dining Room' },
+  { src: 'https://images.pexels.com/photos/827528/pexels-photo-827528.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'restaurant', title: 'Elegant Interior' },
+  { src: 'https://images.pexels.com/photos/941869/pexels-photo-941869.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'restaurant', title: 'Bar Area' },
+  { src: 'https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'food', title: 'Grilled Specialties' },
+  { src: 'https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'food', title: 'Fresh Salads' },
+  { src: 'https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'food', title: 'Artisan Pizza' },
+  { src: 'https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'food', title: 'Dessert Presentation' },
+  { src: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'food', title: 'Seafood Platter' },
+  { src: 'https://images.pexels.com/photos/265947/pexels-photo-265947.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'events', title: 'Wedding Reception' },
+  { src: 'https://images.pexels.com/photos/2290753/pexels-photo-2290753.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'events', title: 'Corporate Event' },
+  { src: 'https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'events', title: 'Birthday Celebration' },
+  { src: 'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=600', category: 'restaurant', title: 'Private Dining' },
 ];
 
 const Gallery = () => {

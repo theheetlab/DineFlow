@@ -28,8 +28,8 @@ router.post('/all', async (req, res) => {
         { name: 'Calamari Fritti', description: 'Crispy calamari, spicy marinara, lemon aioli', price: 15.99, category: 'appetizers', image: 'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600', isFeatured: false, isBestSeller: true, isAvailable: true },
         { name: 'Tiramisu', description: 'Classic Italian espresso-soaked ladyfingers, mascarpone cream', price: 11.99, category: 'desserts', image: 'https://images.pexels.com/photos/2144113/pexels-photo-2144113.jpeg?auto=compress&cs=tinysrgb&w=600', isFeatured: true, isBestSeller: true, isAvailable: true },
         { name: 'Chocolate Lava Cake', description: 'Warm molten center, vanilla bean ice cream, berry coulis', price: 13.99, category: 'desserts', image: 'https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=600', isFeatured: false, isBestSeller: true, isAvailable: true },
-        { name: 'Berry Lemonade', description: 'Fresh-squeezed lemonade, mixed berry puree, mint', price: 6.99, category: 'beverages', image: '', isFeatured: false, isBestSeller: false, isAvailable: true },
-        { name: 'Espresso Martini', description: 'Vodka, Kahlua, fresh espresso, vanilla syrup', price: 14.99, category: 'beverages', image: '', isFeatured: false, isBestSeller: false, isAvailable: true },
+        { name: 'Berry Lemonade', description: 'Fresh-squeezed lemonade, mixed berry puree, mint', price: 6.99, category: 'beverages', image: 'https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&w=600', isFeatured: false, isBestSeller: false, isAvailable: true },
+        { name: 'Espresso Martini', description: 'Vodka, Kahlua, fresh espresso, vanilla syrup', price: 14.99, category: 'beverages', image: 'https://images.pexels.com/photos/312388/pexels-photo-312388.jpeg?auto=compress&cs=tinysrgb&w=600', isFeatured: false, isBestSeller: false, isAvailable: true },
         { name: 'Truffle Fries', description: 'Hand-cut fries, truffle oil, parmesan, fresh herbs', price: 9.99, category: 'sides', image: 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=600', isFeatured: false, isBestSeller: true, isAvailable: true },
         { name: 'Grilled Asparagus', description: 'Charred asparagus, lemon zest, shaved parmesan', price: 8.99, category: 'sides', image: 'https://images.pexels.com/photos/4051007/pexels-photo-4051007.jpeg?auto=compress&cs=tinysrgb&w=600', isFeatured: false, isBestSeller: false, isAvailable: true },
         { name: 'Lobster Linguine', description: 'Fresh Maine lobster, cherry tomatoes, white wine garlic sauce', price: 34.99, category: 'specials', image: 'https://images.pexels.com/photos/725997/pexels-photo-725997.jpeg?auto=compress&cs=tinysrgb&w=600', isFeatured: true, isBestSeller: true, isAvailable: true },
@@ -53,6 +53,25 @@ router.post('/all', async (req, res) => {
       menu: menuCount === 0 ? '14 items added' : 'already exists',
       testimonials: testimonialCount === 0 ? '4 testimonials added' : 'already exists',
     });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.post('/fix-images', async (req, res) => {
+  try {
+    const imageMap = {
+      'Berry Lemonade': 'https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&w=600',
+      'Espresso Martini': 'https://images.pexels.com/photos/312388/pexels-photo-312388.jpeg?auto=compress&cs=tinysrgb&w=600',
+    };
+
+    let updated = 0;
+    for (const [name, image] of Object.entries(imageMap)) {
+      const result = await MenuItem.updateOne({ name, $or: [{ image: '' }, { image: null }] }, { $set: { image } });
+      if (result.modifiedCount > 0) updated++;
+    }
+
+    res.json({ message: `${updated} items updated with images` });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
