@@ -3,11 +3,9 @@ const bcrypt = require('bcryptjs');
 const Admin = require('../models/Admin');
 const MenuItem = require('../models/MenuItem');
 const Testimonial = require('../models/Testimonial');
-const { protect } = require('../middleware/auth');
-
 const router = express.Router();
 
-router.post('/all', protect, async (req, res) => {
+router.post('/all', async (req, res) => {
   try {
     const adminCount = await Admin.countDocuments();
     if (adminCount === 0) {
